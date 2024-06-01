@@ -30,7 +30,7 @@ jobs:
       
       # 安装依赖
       - name: Install
-        run: yarn install --frozen-lockfile
+        run: yarn install
         
       # 运行构建脚本
       - name: Build
