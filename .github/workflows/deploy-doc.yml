@@ -31,6 +31,9 @@ jobs:
       # 安装依赖
       - name: Install
         run: yarn install
+
+      # 更新依赖
+      - run: yarn upgrade
         
       # 运行构建脚本
       - name: Build
