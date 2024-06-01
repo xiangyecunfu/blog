@@ -1,9 +1,10 @@
-import reco from "vuepress-theme-reco";
+
 
 module.exports = {
   title: '一心只想回农村',
   description: '空闲时间分享前端相关知识，也是一个记录自己成长的地方',
   base: "/blog/",
+  theme: 'reco',
   // 设置语言
   locales: {
     '/': {
@@ -64,7 +65,6 @@ module.exports = {
     record: '备案号',
     // 项目开始时间
     startYear: '2022',
-    theme: 'reco',
     type: 'blog',
 
     // 博客配置
