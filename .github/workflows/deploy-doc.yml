@@ -22,31 +22,21 @@ jobs:
           # submodules: true
 
       # 安装依赖 yarn
-      - name: Install dependencies
-        # 如果没有命中缓存才执行 npm install
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
-
-
+      - name: Setup Yarn
+       uses: yarn/action-setup@v2
+        with:
+          # 选择要使用的 yarn 版本
+          version: 1.22.22
+          # 使用 pnpm 安装依赖
+          run_install: true
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           # 选择要使用的 node 版本
           node-version: 20
           # 缓存 yarn 依赖
-          # cache: yarn
-
-      # 如果你的依赖是使用yarn的，用这种
-      # 缓存 yarn node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: yarn
 
       # 运行构建脚本
       - name: Build
@@ -61,4 +51,4 @@ jobs:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
           # 部署目录为 VuePress 的默认输出目录
-          build_dir: src/.vuepress/dist
+          build_dir: docs/.vuepress/dist
