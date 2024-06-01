@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18]
+        node-version: [16]
 
     steps:
       # 检出仓库
@@ -40,9 +40,7 @@ jobs:
         
       # 运行构建脚本
       - name: Build
-        run: |
-          export NODE_OPTIONS=--openssl-legacy-provider
-          yarn run docs:build
+        run: yarn run docs:build
         
 
       # 查看 workflow 的文档来获取更多信息
