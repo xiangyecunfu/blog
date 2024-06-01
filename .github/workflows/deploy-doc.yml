@@ -21,13 +21,12 @@ jobs:
           # 如果你文档需要Git 子模块(submodule)，请取消下一行的注释
           # submodules: true
 
-      - name: Setup yarn
-        uses: yarn/action-setup@v2
-        with:
-          # 选择要使用的 yarn 版本
-          version: 1.22.22
-          # 使用 yarn 安装依赖
-          run_install: true
+      # 安装依赖 yarn
+      - name: Install dependencies
+        # 如果没有命中缓存才执行 npm install
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
+
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,13 +34,24 @@ jobs:
           # 选择要使用的 node 版本
           node-version: 20
           # 缓存 yarn 依赖
-          cache: yarn
+          # cache: yarn
+
+      # 如果你的依赖是使用yarn的，用这种
+      # 缓存 yarn node_modules
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       # 运行构建脚本
       - name: Build
-        run: |-
-          yarn run docs:build
-          > src/.vuepress/dist/.nojekyll
+        run: yarn run docs:build
+        
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
