@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   themeConfig: {
-    logo: "/docs/images/logo.png",
+    logo: "/logo.svg",
     // 导航栏
     nav: [
       { text: '首页', link: '/' },
@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         title: "面试相关",
-        path: "/audition/README",
+        path: "/audition",
         collapsable: true,
         children: [
           { title: 'HTML', path: '/audition/HTML' },
@@ -49,10 +49,10 @@ module.exports = {
       },
       {
         title: "sourceCode",
-        path: "/sourceCode/README",
+        path: "/sourceCode",
         collapsable: true,
         children: [
-          {title: 'taro', path: '/sourceCode/taro/README'},
+          {title: 'taro', path: '/sourceCode/taro/'},
         ]
       }
     ],
@@ -67,17 +67,6 @@ module.exports = {
     // 项目开始时间
     startYear: '2022',
     type: 'blog',
-
-    // 博客配置
-      
-    // 博客主题
-      
-    // 博客主题颜色
-    
-    // 博客主题配置
-    
-    // 博客头像
-    // 是否开启搜索
     shearch: false,
   }
 }
