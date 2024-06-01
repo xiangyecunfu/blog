@@ -23,7 +23,7 @@ jobs:
 
       # 安装依赖 yarn
       - name: Setup Yarn
-       uses: yarn/action-setup@v2
+        uses: yarn/action-setup@v2
         with:
           # 选择要使用的 yarn 版本
           version: 1.22.22
