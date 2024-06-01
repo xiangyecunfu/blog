@@ -1,3 +1,5 @@
+import reco from "vuepress-theme-reco";
+
 module.exports = {
   title: '一心只想回农村',
   description: '空闲时间分享前端相关知识，也是一个记录自己成长的地方',
@@ -44,6 +46,37 @@ module.exports = {
           {title: 'taro', path: '/sourceCode/taro/README'},
         ]
       }
-    ]
+    ],
+    // 右侧边栏
+    subSidebar: 'auto',
+    // 最后更新时间
+    lastUpdated: '更新时间',
+    // 作者
+    author: 'xiangyecunfu',
+    // 备案号
+    record: '备案号',
+    // 项目开始时间
+    startYear: '2022',
+    theme: 'reco',
+    type: 'blog',
+
+    // 博客配置
+      
+    // 博客主题
+      
+    // 博客主题颜色
+    
+    // 博客主题配置
+    
+    // 博客头像
+    // 是否开启搜索
+    shearch: false,
+    // 设置语言
+    locales: {
+      '/': {
+        lang: 'zh-CN'
+      }
+    }
+  
   }
 }
