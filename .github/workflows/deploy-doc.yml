@@ -20,24 +20,18 @@ jobs:
           fetch-depth: 0
           # 如果你文档需要Git 子模块(submodule)，请取消下一行的注释
           # submodules: true
-
-      # 安装依赖 yarn
+      
+      # 缓存 yarn
       - name: Setup Yarn
-        uses: yarn/action-setup@v2
-        with:
-          # 选择要使用的 yarn 版本
-          version: 1.22.22
-          # 使用 pnpm 安装依赖
-          run_install: true
-        
-      - name: Setup Node.js
         uses: actions/setup-node@v4
-        with:
-          # 选择要使用的 node 版本
+        with: 
           node-version: 18
-          # 缓存 yarn 依赖
           cache: yarn
-
+      
+      # 安装依赖
+      - name: Install
+        run: yarn install --frozen-lockfile
+        
       # 运行构建脚本
       - name: Build
         run: yarn run docs:build
