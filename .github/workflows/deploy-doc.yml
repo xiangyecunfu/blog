@@ -21,12 +21,12 @@ jobs:
           # 如果你文档需要Git 子模块(submodule)，请取消下一行的注释
           # submodules: true
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Setup yarn
+        uses: yarn/action-setup@v2
         with:
-          # 选择要使用的 pnpm 版本
-          version: 8
-          # 使用 pnpm 安装依赖
+          # 选择要使用的 yarn 版本
+          version: 1.22.22
+          # 使用 yarn 安装依赖
           run_install: true
 
       - name: Setup Node.js
@@ -34,8 +34,8 @@ jobs:
         with:
           # 选择要使用的 node 版本
           node-version: 20
-          # 缓存 pnpm 依赖
-          cache: pnpm
+          # 缓存 yarn 依赖
+          cache: yarn
 
       # 运行构建脚本
       - name: Build
