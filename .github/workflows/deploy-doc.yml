@@ -10,6 +10,9 @@ on:
 jobs:
   docs:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 18]
 
     steps:
       # 检出仓库
@@ -25,7 +28,7 @@ jobs:
       - name: Setup Yarn
         uses: actions/setup-node@v4
         with: 
-          node-version: 18
+          node-version: ${{ matrix.node-version }}
           cache: yarn
       
       # 安装依赖
@@ -37,7 +40,9 @@ jobs:
         
       # 运行构建脚本
       - name: Build
-        run: yarn run docs:build
+        run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
+          yarn run docs:build
         
 
       # 查看 workflow 的文档来获取更多信息
