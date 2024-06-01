@@ -12,6 +12,7 @@ module.exports = {
     }
   },
   themeConfig: {
+    logo: "/docs/images/logo.png",
     // 导航栏
     nav: [
       { text: '首页', link: '/' },
@@ -60,12 +61,12 @@ module.exports = {
     // 最后更新时间
     lastUpdated: '更新时间',
     // 作者
-    // author: 'xiangyecunfu',
+    author: 'xiangyecunfu',
     // 备案号
-    // record: '备案号',
+    record: '备案号',
     // 项目开始时间
-    // startYear: '2022',
-    // type: 'blog',
+    startYear: '2022',
+    type: 'blog',
 
     // 博客配置
       
