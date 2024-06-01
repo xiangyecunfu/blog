@@ -3,6 +3,13 @@ import reco from "vuepress-theme-reco";
 module.exports = {
   title: '一心只想回农村',
   description: '空闲时间分享前端相关知识，也是一个记录自己成长的地方',
+  base: "/blog/",
+  // 设置语言
+  locales: {
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
   themeConfig: {
     // 导航栏
     nav: [
@@ -71,12 +78,5 @@ module.exports = {
     // 博客头像
     // 是否开启搜索
     shearch: false,
-    // 设置语言
-    locales: {
-      '/': {
-        lang: 'zh-CN'
-      }
-    }
-  
   }
 }
