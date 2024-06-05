@@ -1,4 +1,4 @@
-
+const path = require('path');
 
 module.exports = {
   title: '一心只想回农村',
@@ -11,6 +11,7 @@ module.exports = {
       lang: 'zh-CN'
     }
   },
+  // 设置主题
   themeConfig: {
     logo: "/logo.svg",
     // 导航栏
@@ -43,8 +44,12 @@ module.exports = {
           { title: 'HTML', path: '/audition/HTML' },
           { title: 'CSS', path: '/audition/CSS' },
           { title: 'JavaScript', path: '/audition/JavaScript' },
-          { title: 'Vue', path: '/audition/Vue' },
-          { title: 'React', path: '/audition/React' },
+          { title: 'Vue', path: '/audition/Vue/' },
+          { title: 'React', path: '/audition/React/',
+            children: [
+              {title: 'React基础', path: '/audition/React/ReactBase'},
+            ]
+           },
         ]
       },
       {
@@ -68,5 +73,14 @@ module.exports = {
     startYear: '2022',
     type: 'blog',
     shearch: false,
+  },
+
+  // 别名设置
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@img': path.resolve(__dirname, 'images')
+      }
+    }
   }
 }
