@@ -3,55 +3,17 @@
     color: #f85959;
 }
 
-input[type="checkbox"] 
-  opacity 0
-  margin-right 10px
+/* 定义文章中图片的样式*/
 
-
-input[type="checkbox"] + label {
-  cursor: pointer;
-}
-
-input[type="checkbox"] + label:before {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #ccc;
-  background-color: white;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-
-input[type="checkbox"]:checked + label:before {
-  background-color: #0286DF;
-  line-height 20px
-  color white
-  content: '\2713';
-  font-size: 16px;
-  text-align center
-}
-
-ul.task-list
-  list-style-type none
-  padding-left 0
-
-  li.task-item
-    margin-bottom 10px
-
-    input.task-checkbox
-      margin-right 10px
-      vertical-align middle
-
-      &:disabled
-        cursor not-allowed
-
-    label.task-label
-      vertical-align middle
-      cursor pointer
-
-      &.completed
-        text-decoration line-through #ff6600 
-        color #0286DF
-
-
+.image-box
+  margin 0 auto
+  img
+    width 450px
+    height 450px
+    border 1px solid #d4efec
+  p
+    width 100%
+    text-align center
+    color #666
+    font-size 16px
+    line-height 26px

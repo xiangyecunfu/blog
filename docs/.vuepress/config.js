@@ -66,7 +66,7 @@ module.exports = {
     // 最后更新时间
     lastUpdated: '更新时间',
     // 作者
-    author: 'xiangyecunfu',
+    author: '一心只想回农村',
     // 备案号
     record: '备案号',
     // 项目开始时间
@@ -82,5 +82,7 @@ module.exports = {
         '@img': path.resolve(__dirname, 'images')
       }
     }
-  }
+  },
+
+  // 插件
 }
