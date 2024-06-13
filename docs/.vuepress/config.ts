@@ -12,7 +12,7 @@ export default defineUserConfig({
   alias: {
     '@images': path.resolve(__dirname, './images')
   },
-  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
+  head: [['link', { rel: 'icon', href: '/blog/logo.svg' }]],
   title: "一心只想回农村",
   base: '/blog/'
 })
