@@ -21,8 +21,6 @@ jobs:
         with:
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
-          # 如果你文档需要Git 子模块(submodule)，请取消下一行的注释
-          # submodules: true
       
       # 安装 pnpm
       - name: Setup pnpm

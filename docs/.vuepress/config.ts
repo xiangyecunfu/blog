@@ -13,5 +13,5 @@ export default defineUserConfig({
     '@images': path.resolve(__dirname, './images')
   },
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
-  title: "一心只想回农村"
+  title: "一心只想回农村",
 })

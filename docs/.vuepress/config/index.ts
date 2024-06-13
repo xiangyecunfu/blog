@@ -12,5 +12,10 @@ export const themeConfig = {
   docsBranch: 'main',
   logo: '/logo.svg',
   authorAvatar: '/avatar.jpg',
-  author: '一心只想回农村'
+  author: '一心只想回农村',
+  locales: {
+    '/': {
+      lastUpdatedText: '最后更新时间',
+    }
+  }
 }
