@@ -14,4 +14,5 @@ export default defineUserConfig({
   },
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
   title: "一心只想回农村",
+  base: '/blog/'
 })
