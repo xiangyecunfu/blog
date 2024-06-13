@@ -1,0 +1,9 @@
+/* @import url('@vuepress-reco/tailwindcss-config/lib/client/tailwindcss-base.css'); */
+
+.banner-brand__wrapper {
+  .banner-brand__content {
+    .description {
+      color: #333;
+    }
+  }
+}

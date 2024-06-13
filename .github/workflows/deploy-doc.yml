@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16]
+        node-version: [18]
 
     steps:
       # 检出仓库
@@ -24,23 +24,25 @@ jobs:
           # 如果你文档需要Git 子模块(submodule)，请取消下一行的注释
           # submodules: true
       
-      # 缓存 yarn
-      - name: Setup Yarn
+      # 安装 pnpm
+      - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        # 选择要使用的 pnpm 版本
+        version: 9
+        # 使用 pnpm 安装依赖
+        run_install: true
+      
+      # 安装 Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with: 
           node-version: ${{ matrix.node-version }}
-          cache: yarn
-      
-      # 安装依赖
-      - name: Install
-        run: yarn install
-
-      # 更新依赖
-      - run: yarn upgrade
+          cache: pnpm  
         
       # 运行构建脚本
-      - name: Build
-        run: yarn run docs:build
+      - name: Build 
+        run: pnpm docs:build
         
 
       # 查看 workflow 的文档来获取更多信息
