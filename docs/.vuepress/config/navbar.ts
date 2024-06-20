@@ -20,6 +20,22 @@ export const navbar:Navbar = [
         text: 'HTML',
         link: '/series/audition/HTML',
       },
+      {
+        text: 'CSS',
+        link: '/series/audition/CSS',
+      },
+      {
+        text: 'JavaScript',
+        link: '/series/audition/JavaScript',
+      },
+      {
+        text: 'Vue',
+        link: '/series/audition/Vue',
+      },
+      {
+        text: 'React',
+        link: '/series/audition/React',
+      },
     ]
   },
   {

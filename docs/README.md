@@ -6,7 +6,7 @@ modules: # 指定首页展示模块
   - Features
   - Footer
 bannerBrand:
-  title: 一心只想会农村
+  title: 一心只想回农村
   description: 一个大龄喜爱看网文的前端博主
   tagline: 分享前端知识，如前端面试题、前端开发技巧、源码解读、学习笔记等
   bgImage: /bg-4.jpg

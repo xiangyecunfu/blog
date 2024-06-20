@@ -168,3 +168,10 @@ requestIdleCallback兼容性不好，React目前使用PostMessage模拟实现的
 
 ## 27. useDebugValue的作用？
 可以使用调试工具，做组件基本的`debug`, 记得开启严格模式。
+
+## 28. 单页面和多页面的区别是什么？
+1. **单页面：** 只有一个html页面
+2. **多页面：** 
+  - 多个html页面，通过window.location.href来进行切换。
+  - 缺点： 每一个页面都需要刷新重新加载资源，性能比较慢。
+  - 优点： SEO友好，适合C端项目。
