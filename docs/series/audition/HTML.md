@@ -112,3 +112,51 @@ HTML语义化标签是指在HTML文档中使用具有明确定义和语义含义
 - reset:用于重置表单。
 - button:用于创建自定义按钮。
 
+## 12. script标签中defer和async的区别?
+- defer:当浏览器遇到带有defer属性的script标签时，会异步加载脚本，但会等到整个页面解析完毕后再执行脚本。这意味着脚本会在DOMContentLoaded事件触发后执行，但不会阻塞页面的渲染。
+- async:当浏览器遇到带有async属性的script标签时，会异步加载脚本，并在脚本加载完成后立即执行。这意味着脚本可能会在页面解析过程中执行，可能会阻塞页面的渲染。
+
+## 13. 常⽤的meta标签有哪些?
+- `<meta charset="UTF-8">`:定义文档的字符编码为UTF-8，确保正确显示各种字符和符号。
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">`:定义视口宽度为设备宽度，初始缩放比例为1.0，用于响应式设计。
+- `<meta name="description" content="页面描述">`:定义页面的描述，有助于搜索引擎优化(SEO)。
+- `<meta name="keywords" content="关键词1,关键词2,关键词3">`:定义页面的关键词，有助于搜索引擎优化(SEO)。
+- `<meta name="author" content="作者姓名">`:定义页面的作者，有助于搜索引擎优化(SEO)。
+- `<meta name="robots" content="index, follow">`:定义搜索引擎爬虫的行为，如是否索引和跟踪页面。
+
+## 14. 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些?
+- **行内元素有：** `a b span img input select strong`；
+- **块级元素有：** `div ul ol li dl dt dd h1 h2 h3 h4 h5 h6 p`；
+空元素，即没有内容的HTML元素。空元素是在开始标签中关闭的，也就是空元素没有闭合标签：
+- **常见的有：** <br>、<hr>、<img>、<input>、<link>、<meta>；
+- **鲜见的有：** <area>、<base>、<col>、<colgroup>、<command>、<embed>、<keygen>、<param>、<source>、<track>、<wbr>
+
+## 15. 说一下 web worker
+Web Worker 是一种运行在后台的 JavaScript 线程，它允许在主线程之外执行 JavaScript 代码，从而避免阻塞主线程的执行。Web Worker 可以用于执行耗时的操作，如数据处理、图像处理等，而不会影响页面的响应性。
+Web Worker 的使用步骤如下：
+1. 创建一个新的 Worker：使用 `new Worker()` 构造函数创建一个新的 Worker 实例，并传入 JavaScript 文件的 URL。
+2. 发送消息：使用 `postMessage()` 方法向 Worker 发送消息。消息可以是任何可序列化的 JavaScript 对象。
+3. 接收消息：在 Worker 中，使用 `onmessage` 事件处理程序来接收从主线程发送的消息。
+4. 返回消息：在 Worker 中，使用 `postMessage()` 方法向主线程发送消息。
+5. 关闭 Worker：使用 `close()` 方法关闭 Worker。
+
+## 16. head 标签有什么作用，其中什么标签必不可少？
+`<head>` 标签用于包含 HTML 文档的元数据，如文档的标题、字符编码、样式表、脚本等。`<head>` 标签中的内容不会直接显示在页面上，但它们对于页面的渲染和功能至关重要。
+
+`<head>` 标签中的一些常见标签包括：
+- `<title>`:定义文档的标题，显示在浏览器的标题栏或标签页上。
+- `<meta>`:用于提供关于 HTML 文档的元数据，如字符编码、描述、关键词等。
+- `<link>`:用于链接外部资源，如样式表、图标等。
+- `<style>`:用于定义内联样式，直接在 HTML 文档中嵌入 CSS 样式。
+- `<script>`:用于嵌入或引用 JavaScript 文件，用于实现动态功能。
+- `<base>`:用于指定页面上所有链接的默认 URL 和目标。
+`<head>` 标签中的一些标签是必不可少的，如 `<title>` 标签，它定义了文档的标题，对于搜索引擎优化(SEO)和用户体验都至关重要。
+
+## 17. Canvas和SVG的区别？
+Canvas 和 SVG 是两种用于在网页上绘制图形的技术，它们有一些重要的区别：
+
+1. **渲染方式：** Canvas 使用基于像素的渲染方式，可以在位图中绘制和操作图形。SVG 使用基于矢量的渲染方式，可以在文档对象模型(DOM)中绘制和操作图形。
+2. **性能：** 由于 Canvas 使用基于像素的渲染方式，它在处理大量图形和动画时通常具有更好的性能。而 SVG 使用基于矢量的渲染方式，在处理复杂图形和动画时可能会较慢。
+3. **可交互性：** SVG 支持更丰富的交互性，如事件处理、动画等。而 Canvas 的交互性相对较弱，通常需要使用 JavaScript 来实现。
+4. **文本处理：** SVG 支持更复杂的文本处理，如文本路径、文本对齐等。而 Canvas 的文本处理相对简单，通常需要使用 JavaScript 来实现。
+5. **文件大小：** SVG 文件通常比 Canvas 文件大，因为 SVG 是基于 XML 的，而 Canvas 是基于像素的。
