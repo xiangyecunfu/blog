@@ -126,10 +126,10 @@ HTML语义化标签是指在HTML文档中使用具有明确定义和语义含义
 
 ## 14. 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些?
 - **行内元素有：** `a b span img input select strong`；
-- **块级元素有：** `div ul ol li dl dt dd h1 h2 h3 h4 h5 h6 p`；
+- **块级元素有：** `div ul ol li dl dt dd h1 h2 h3 h4 h5 h6 p`；<br/>
 空元素，即没有内容的HTML元素。空元素是在开始标签中关闭的，也就是空元素没有闭合标签：
-- **常见的有：** <br>、<hr>、<img>、<input>、<link>、<meta>；
-- **鲜见的有：** <area>、<base>、<col>、<colgroup>、<command>、<embed>、<keygen>、<param>、<source>、<track>、<wbr>
+- **常见的有：** `<br>、<hr>、<img>、<input>、<link>、<meta>`；
+- **鲜见的有：** `<area>、<base>、<col>、<colgroup>、<command>、<embed>、<keygen>、<param>、<source>、<track>、<wbr>`
 
 ## 15. 说一下 web worker
 Web Worker 是一种运行在后台的 JavaScript 线程，它允许在主线程之外执行 JavaScript 代码，从而避免阻塞主线程的执行。Web Worker 可以用于执行耗时的操作，如数据处理、图像处理等，而不会影响页面的响应性。
