@@ -119,6 +119,44 @@
   - **支持异步:** 在检测数据变化后，可进行同步或异步操作,
 
 ## 12. Vue中的插槽是什么？
+  - 插槽(slot)是由父组件传递一些模板片段给子组件进行渲染，由子组件使用`<slot>`内置组件来接收这些模板片段，并插入到子组件的指定位置。
+  - vue中插槽分为四种种，分别为默认插槽、具名插槽、动态插槽、条件插槽。
+    ```vue
+    <!-- 父组件 -->
+    <template>
+      <div>
+        <child>
+          <template v-slot:default>
+            <p>默认插槽内容</p>
+          </template>
+          <template v-slot:header>
+            <p>具名插槽内容</p>
+          </template>
+          <template v-slot:footer="item">
+            <p>作用域插槽内容</p>
+          </template>
+          <template #[slotName]="item">
+            <p>动态插槽</p>
+          </template>
+        </child>
+      </div>
+    </template>
+
+    <!-- 子组件 -->
+    <template>
+      <div>
+        <slot></slot>
+        <slot name="header"></slot>
+        <!-- 作用域插槽就是可以将子组件的值传递给父组件 -->
+        <slot name="footer" :item="item"></slot>
+        <!-- 条件插槽 -->
+        <div v-if="$slots.body">
+          <slot name="body"></slot>
+        </div>
+      </div>
+    </template>
+    ```
+  - 插槽作用域：就是在父组件中，使用子组件传递过来的数据，常用于一些高级列表中使用。
 
 ## 13. Vue的$nextTick是如何实现的？
 - 当调用`this.$nextTick(cal1back)`时，会将`callback`函数存储在一个队列中，以便稍后执行。
@@ -156,6 +194,75 @@ Vue3在设计上选择使用`Proxy`替代`Object.defineProperty`主要是为了�
   - 使用`Proxy`可以解决`Object.defineProperty`的限制问题。它可以直接拦截对象的读取和赋值操作，无需在每个属性上进行劫持。这样就消除了属性级别的劫持开销，提高了初始化性能。另外，Proxy 还可以拦截新增属性和删除属性的操作，使得响应式系统更加完备和自动化。
 
 ## 16. Vue3中ref和reactive的区别？
+  1. ref是生成响应式对象，主要用于基础类型。至于为什么实际使用是`.value`, 因为ref返回的是一个响应式类。
+  ```JavaScript
+    function isRef(r) {
+      return !!(r && r.__v_isRef === true);
+    }
+    function ref(value) {
+      return createRef(value, false);
+    }
+    function shallowRef(value) {
+      return createRef(value, true);
+    }
+    function createRef(rawValue, shallow) {
+      if (isRef(rawValue)) {
+        return rawValue;
+      }
+      return new RefImpl(rawValue, shallow);
+    }
+    class RefImpl {
+      constructor(value, __v_isShallow) {
+        this.__v_isShallow = __v_isShallow;
+        this.dep = void 0;
+        this.__v_isRef = true;
+        this._rawValue = __v_isShallow ? value : toRaw(value);
+        this._value = __v_isShallow ? value : toReactive(value);
+      }
+      get value() {
+        trackRefValue(this);
+        return this._value;
+      }
+      set value(newVal) {
+        const useDirectValue = this.__v_isShallow || isShallow(newVal) || isReadonly(newVal);
+        newVal = useDirectValue ? newVal : toRaw(newVal);
+        if (hasChanged(newVal, this._rawValue)) {
+          this._rawValue = newVal;
+          this._value = useDirectValue ? newVal : toReactive(newVal);
+          triggerRefValue(this, 4, newVal);
+        }
+      }
+    }
+```
+  2. reactive是代理整个对象，主要用于引用类型。
+  ```JavaScript
+    function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
+      if (!isObject(target)) {
+        {
+          warn$2(`value cannot be made reactive: ${String(target)}`);
+        }
+        return target;
+      }
+      if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
+        return target;
+      }
+      const existingProxy = proxyMap.get(target);
+      if (existingProxy) {
+        return existingProxy;
+      }
+      const targetType = getTargetType(target);
+      if (targetType === 0 /* INVALID */) {
+        return target;
+      }
+      const proxy = new Proxy(
+        target,
+        targetType === 2 /* COLLECTION */ ? collectionHandlers : baseHandlers
+      );
+      proxyMap.set(target, proxy);
+      return proxy;
+    }
+  ```
+
 
 ## 17. 请说下Vue中的Diff算法？
 
