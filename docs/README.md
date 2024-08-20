@@ -14,7 +14,7 @@ bannerBrand:
     height: 100vh
     overflow: hidden
   buttons:
-    - { text: 关于我, link: /about }
+    - { text: 关于我, link: about }
 blog:
   socialLinks:
     - { icon: 'LogoGithub', link: 'https://github.com/xiangyecunfu' }
